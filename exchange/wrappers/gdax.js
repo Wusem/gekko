@@ -13,7 +13,7 @@ const marketData = require('./coinbase-markets.json');
 const Trader = function(config) {
   this.post_only = true;
   this.use_sandbox = false;
-  this.name = 'GDAX';
+  this.name = 'CoinBase';
   this.scanback = false;
   this.scanbackTid = 0;
   this.scanbackResults = [];
@@ -31,7 +31,7 @@ const Trader = function(config) {
     this.pair = [config.asset, config.currency].join('-').toUpperCase();
     this.post_only =
       typeof config.post_only !== 'undefined' ? config.post_only : true;
-    
+
     if (config.sandbox) {
       this.use_sandbox = config.sandbox;
     }
@@ -412,7 +412,7 @@ Trader.prototype.getMaxDecimalsNumber = function(number, decimalLimit = 8) {
 
 Trader.getCapabilities = function() {
   return {
-    name: 'GDAX',
+    name: 'CoinBase',
     slug: 'gdax',
     currencies: marketData.currencies,
     assets: marketData.assets,
